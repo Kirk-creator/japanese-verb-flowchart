@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Japanese Verb Conjugation Flowchart</title>
+    <meta
+      name="description"
+      content="A visual flowchart for Japanese verb conjugation: Ichidan, Godan, and irregular する / 来る."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,520;9..144,680&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <p class="brand-kana">動詞の活用</p>
+        <h1>Japanese Verb Flowchart</h1>
+        <p class="lede">
+          Watch Ichidan, Godan, and the irregulars change shape. Pick a group,
+          drop in a verb, and follow the stems.
+        </p>
+      </div>
+
+      <div class="header-tools">
+        <div class="script-toggle" role="group" aria-label="Writing system">
+          <button type="button" data-script="kanji" class="is-active">Kanji</button>
+          <button type="button" data-script="kana">Kana</button>
+          <button type="button" data-script="romaji">Romaji</button>
+        </div>
+        <ul class="color-key" aria-label="Color legend">
+          <li><span class="swatch swatch-a"></span>あ-stem</li>
+          <li><span class="swatch swatch-i"></span>い-stem</li>
+          <li><span class="swatch swatch-u"></span>う-stem</li>
+          <li><span class="swatch swatch-e"></span>え-stem</li>
+          <li><span class="swatch swatch-o"></span>お-stem</li>
+          <li><span class="swatch swatch-s"></span>suffix</li>
+          <li><span class="swatch swatch-te"></span>te/ta change</li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="group-select" aria-label="Verb category">
+      <button type="button" class="group-btn is-active" data-group="godan">
+        <span class="group-en">Godan verbs</span>
+        <span class="group-jp">Group 1 / 五段</span>
+        <span class="group-hint">Five-step vowel shift</span>
+      </button>
+      <button type="button" class="group-btn" data-group="ichidan">
+        <span class="group-en">Ichidan verbs</span>
+        <span class="group-jp">Group 2 / 一段</span>
+        <span class="group-hint">Drop る and attach</span>
+      </button>
+      <button type="button" class="group-btn" data-group="irregular">
+        <span class="group-en">Irregular verbs</span>
+        <span class="group-jp">Group 3 / 不規則</span>
+        <span class="group-hint">する and 来る</span>
+      </button>
+    </section>
+
+    <section class="verb-bar">
+      <div class="verb-field">
+        <label for="verb-input">Live example</label>
+        <div class="verb-input-wrap">
+          <input
+            id="verb-input"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="書く, たべる, or kaku"
+            aria-autocomplete="list"
+            aria-controls="verb-suggestions"
+          />
+          <p id="verb-meta" class="verb-meta"></p>
+        </div>
+        <ul id="verb-suggestions" class="suggestions" hidden></ul>
+      </div>
+      <div class="verb-picks" aria-label="Sample verbs">
+        <p class="picks-label">Try a sample</p>
+        <div id="verb-chips" class="chip-row"></div>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" hidden></p>
+
+    <main id="stage" class="stage"></main>
+
+    <footer class="site-footer">
+      <p>
+        Godan (五段) walks the five vowel columns. Ichidan (一段) keeps one
+        stem. する and 来る break the pattern on purpose.
+      </p>
+    </footer>
+
+    <noscript>
+      <p class="noscript">This flowchart needs JavaScript to conjugate live examples.</p>
+    </noscript>
+
+    <script src="conjugator.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
